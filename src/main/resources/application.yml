@@ -1,0 +1,28 @@
+name: xuwb-b
+age: 26
+email: xuwb-b@glodon.com
+context: "name: ${name} age: ${age}"
+
+boy:
+  age: 25
+  height: 185
+
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 20MB
+      max-request-size: 20MB
+
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/spring?serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    connectionProperties: druid.stat.mergeSql=true
+
+
+mybatis:
+  type-aliases-package: com.glodon.springboothello.domain
+  mapper-locations: classpath:mapper/*.xml

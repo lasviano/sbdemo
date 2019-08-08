@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>一个Thymeleaf的入门案例</title>
+</head>
+<body>
+<span th:text="${message}"></span>
+<br/>
+<h3>条件判断</h3>
+<div th:if="${gender}=='男'">
+    这是一位男性朋友
+</div>
+<div th:if="${gender}=='女'">
+    这是一位女性朋友
+</div>
+<br/>
+<div th:switch="${grade}">
+    <span th:case="1">这是 1 的情况</span>
+    <span th:case="2">这是 2 的情况</span>
+    <span th:case="3">这是 3 的情况</span>
+</div>
+</body>
+</html>
