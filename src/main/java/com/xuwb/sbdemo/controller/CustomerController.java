@@ -4,10 +4,10 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.xuwb.sbdemo.domain.Customer;
 import com.xuwb.sbdemo.service.CustomerService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -40,9 +40,13 @@ public class CustomerController {
      * 列表展示
      */
     @RequestMapping("/list")
-    public String list(Model model){
+    public String list(Model model,@RequestParam(required=true,defaultValue="1")Integer page){
+        PageHelper.startPage (page,5);
         List<Customer> list = customerService.findAll();
+        PageInfo<Customer> p=new PageInfo<Customer>(list);
+
         model.addAttribute("list", list);
+        model.addAttribute ("page",p);
         return "list";
     }
 

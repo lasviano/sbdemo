@@ -6,7 +6,7 @@
 </head>
 <body>
 <h3>客户列表展示</h3>
-<table border="1" style="width: 500px;">
+<table border="1" style="width: 500px;" align="center">
     <tr>
         <td>编号</td>
         <td>姓名</td>
@@ -28,5 +28,28 @@
     </tr>
 </table>
 
+<div align="center" style="margin-top:2%;">
+    总共<span th:text="${page.pages}"/>页|
+    第<span th:text="${page.pageNum}"/>页|
+    <a th:href="@{/customer/list(page=${page.firstPage})}">首页</a>|
+
+    <span th:if="${page.getPageNum()}=='1'">
+        <a th:href="@{/customer/list(page=1)}">上一页</a>|
+    </span>
+    <span th:if="${page.pageNum}!='1'">
+        <a th:href="@{/customer/list(page=${page.prePage})}">上一页</a>|
+    </span>
+
+    <span th:if="${page.getPageNum()}==${page.pages}">
+        <a th:href="@{/customer/list(page=${page.pages})}">下一页</a>|
+    </span>
+    <span th:if="${page.getPageNum()}!=${page.pages}">
+        <a th:href="@{/customer/list(page=${page.nextPage})}">下一页</a>|
+    </span>
+
+    <a th:href="@{/customer/list(page=${page.lastPage})}">尾页</a>
+<!--    <input type="hidden" id="first" th:value="${page.firstPage}"/>-->
+<!--    <input type="hidden" id="last" th:value="${page.pages}"/>-->
+</div>
 </body>
 </html>
